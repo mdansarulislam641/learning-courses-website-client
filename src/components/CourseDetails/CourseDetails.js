@@ -22,7 +22,7 @@ const CourseDetails = () => {
                     <span className='text-red-800'>{idx+1 +'. '}</span> {des}
                      </p>
                      )
-                    }
+                    }    
 
             </div>
             <div className='h-[300px] mt-[35px]  block'>
