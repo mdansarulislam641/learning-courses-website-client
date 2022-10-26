@@ -6,7 +6,7 @@ const Header = () => {
         <div className='bg-violet-300 py-2'>
            <div className='flex justify-between items-center w-9/12 mx-auto'>
             <div>
-                <h2>JUNIOR HERO</h2>
+                <h2>JUNIOR HERO</h2> 
             </div>
                <div> 
                     <NavLink style={{padding:'5px 10px', borderRadius:'5px'}} className={({isActive}) => isActive ? 'bg-red-500' : undefined }  to='/courses'>Courses</NavLink>
