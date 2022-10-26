@@ -21,6 +21,11 @@ const Login = () => {
     const from = location.state?.from?.pathname || '/';
     const handleGoogleLogIn = () =>{
         handleGoogleSignIn(GoogleProvider)
+        .then(result=>{
+
+            navigate('/')
+        })
+        .catch(e=>{})
     }
 
     const handleSubmit = e =>{

@@ -1,7 +1,7 @@
 import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import { FaGoogle } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvier/AuthProvider';
 
 const Register = () => {
@@ -13,14 +13,26 @@ const Register = () => {
         email:"",
         password:""
     })
+    const [userError, setUserError] = useState({
+        email:"",
+        password:""
+    })
+    const navigate = useNavigate();
     const handleGoogleLogIn = ()=>{
         handleGoogleSignIn(GoogleProvider)
+        .then(result=>{
+
+            navigate('/')
+        })
+        .catch(e=>{})
     }
     const handleRegister = e =>{
         e.preventDefault();
         createNewUser(userInfo.email,userInfo.password)
         .then(result=>{
             console.log(result.user)
+            navigate('/')
+
         })  
         .catch(error=>{
 
@@ -37,7 +49,14 @@ const Register = () => {
     }
     const handleEmail = e =>{
         const email = e.target.value ;
-        setUserInfo({...userInfo, email:email})
+        if(!/\S+@\S+\.\S+/.test(email)){
+            setUserError({...userError, email:'your email is not correct'})
+            setUserInfo({...userInfo,email:email })
+        }
+        else{
+            setUserInfo({...userInfo,email:email })
+            setUserError({...userError, email:''})
+        }
     }
     const handlePassword = e =>{
         const password = e.target.value ;
@@ -71,6 +90,7 @@ const Register = () => {
                             </label>
                             <input onChange={handleEmail} type="email" placeholder="your email" className="input input-bordered" required />
                         </div>
+                            {userError.email && <p className='text-red-800'>{userError.email}</p>}
                     
                         <div className="form-control">
                             <label className="label">

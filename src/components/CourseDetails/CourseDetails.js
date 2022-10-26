@@ -1,19 +1,27 @@
 import React from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import {  FaDownload} from 'react-icons/fa';
-
+import './CourseDetails.css';
+import CourseLeft from '../Courses/CourseLeftSide/CourseLeft';
 const CourseDetails = () => {
     const courseDetails = useLoaderData()
     const { name, id,description_title,description_img, description_header, description, price } = courseDetails;
     // console.log(courseDetails)
     
     return (
-        <div className=" w-9/12 mx-auto mt-[70px]">
-           <div className='bg-violet-300 py-3 text-3xl font-mono font-bold text-center'>
+        <div className='course-sidenav-course-card-container  bg-violet-300'>
+             <div className='bg-violet-300 mt-[80px]'>
+             <CourseLeft ></CourseLeft>
+             </div>
+            <div className=" borer-2 bg-violet-200">
+           <div className='bg-violet-300 py-3 md:text-3xl text-xl font-mono md:font-bold text-center'>
                <h1>{description_header}</h1>
            </div>
-                <h1 className='flex justify-end mt-5 mr-4'> <button className='w-1/6 flex  items-center text-center border-2 py-2 px-2 btn-outline text-2xl bg-violet-200 rounded-lg'><FaDownload className='text-red-500 mr-1'/>download</button></h1>
-         <div className='grid mx-auto   lg:grid-cols-[700px_minmax(400px,_1fr)]'>
+               <div className='text-center mt-5 flex items-center justify-between mx-5'>
+               <div><button className='border-2 flex items-center py-2 px-2 btn-outline text-2xl bg-violet-200 rounded-lg'><FaDownload className='text-red-500 mr-1'/><span>download</span></button></div>
+               <h2 className='md:text-2xl text-xl font-bold'>Total Price:{price}</h2>
+               </div>
+         <div className='grid mx-auto details-container'>
             <div className="card-body">
                   <h1 className='text-2xl text-red-700 underline font-extrabold'>{description_title}</h1>
                 {
@@ -25,9 +33,9 @@ const CourseDetails = () => {
                     }    
 
             </div>
-            <div className='h-[300px] mt-[35px]  block'>
+            <div className='h-[300px] mt-[35px]  block course-details-cart'>
                 <h2 className='text-2xl text-center font-extrabold underline mb-5 text-red-700'>Course Information</h2>
-                   <div className='bg--500 border-2'>
+                   <div className='bg-red-500 border-2 mr-5 '>
                    <img className='w-full h-[200px] object-fill'  src={description_img} alt="" />
                     <div className='p-5'>
                     <h2 className='text-4xl font-extrabold'>Course: {name}</h2>
@@ -38,12 +46,15 @@ const CourseDetails = () => {
             </div>
            
          </div>
-         <Link to={`/course&prosed/${id}`} className=' mt-5 mx-auto py-3 text-3xl font-mono font-bold rounded-lg hover:bg-blue-600 text-black text-center'>
-            <p className='bg-blue-400 w-1/2 mx-auto'>
+         <Link to={`/course&prosed/${id}`} className=' mx-auto md:text-3xl text-2xl font-mono font-bold rounded-lg hover:bg-blue-600 text-black text-center'>
+            <p className='bg-blue-400 md:w-1/2 mx-auto py-2  md:mt-[50px]'>
             Get Premium 
             </p>
         </Link>
         </div>
+     
+        </div>
+        
     );
 };
 

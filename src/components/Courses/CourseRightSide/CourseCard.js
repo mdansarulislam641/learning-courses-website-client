@@ -5,8 +5,8 @@ const CourseCard = ({ course }) => {
     // console.log(course)
     const { img, name, title, id, price } = course;
     return (
-        <div className="bg-base-100 shadow-xl rounded-lg">
-            <figure><img className='w-full h-[200px] object-fill' src={img} alt="Shoes" /></figure>
+        <div className="bg-violet-300 shadow-xl rounded-lg">
+            <figure><img className='w-full h-[200px] object-fill' src={img} alt="course img" /></figure>
             <div className="p-5">
                 <div className='h-[180px]'>
                     <h2 className="text-3xl font-extrabold font-mono mb-3">

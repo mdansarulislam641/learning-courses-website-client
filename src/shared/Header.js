@@ -11,8 +11,8 @@ const Header = () => {
         .catch(error=>{})
     }
     return (
-        <div className='bg-violet-300 py-2'>
-           <div className='flex justify-between items-center w-9/12 mx-auto'>
+        <div className='bg-violet-300 py-2 max-w-full hidden'>
+           <div className='flex justify-between items-center max-w-[1300px] mx-auto'>
             <div>
                 <Link to='/home'>
                 <h2 className='text-3xl font-extrabold font-mono'><span className='text-5xl'>J</span><span className='text-yellow-600'>UNIOR</span><span className='text-blue-800'><span className='text-5xl text-white'>H</span>ERO</span></h2> 
@@ -30,7 +30,7 @@ const Header = () => {
                     <button onClick={handleSignOut} className='btn-outline font-bold font-mono text-xl rounded'>SignOut</button>
                     {
                        user && user?.photoURL ? <img title={user?.displayName}  className='h-[40px] rounded-full inline-block ml-5' src={user.photoURL} alt="" /> : <img 
-                        title={user?.displayName} className='h-[40px] rounded-full inline-block ml-5' src='https://i.ibb.co/MnGKtKm/download.jpg' alt="" />
+                         className='h-[40px] rounded-full inline-block ml-5 tooltip tooltip-open tooltip-bottom' data-tip={user?.displayName} src='https://i.ibb.co/MnGKtKm/download.jpg' alt="" />
 
                     }
                     </> :

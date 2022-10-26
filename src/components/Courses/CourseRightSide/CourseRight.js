@@ -6,7 +6,7 @@ const CourseRight = () => {
     const courses = useContext(CourseContext)
     // console.log(courses)
     return (
-        <div className='w-[1050px] grid lg:grid-cols-3 md:grid-cols-2 gap-5 grid-cols-1'>
+        <div className='grid lg:grid-cols-3 md:grid-cols-2 gap-5 grid-cols-1'>
            {
             courses.map(singleCourse=><CourseCard
                 key={singleCourse.id}

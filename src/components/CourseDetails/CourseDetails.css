@@ -1,0 +1,19 @@
+.details-container{
+    display: grid;
+    grid-template-columns: 4fr 3fr;
+}
+
+@media only screen and (max-width:991px) {
+    .details-container{
+        grid-template-columns: 1fr;
+    }
+    .course-details-cart{
+
+        display: none;
+    }
+}
+@media only screen and (max-width:768px) {
+    .details-container{
+        grid-template-columns: 1fr;
+    }
+}

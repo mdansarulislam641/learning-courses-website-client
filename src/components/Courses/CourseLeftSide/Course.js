@@ -5,9 +5,9 @@ const Course = ({course}) => {
     // console.log(course)
     const {name,id} = course ;
     return (
-        <div className=''>
-           <Link to={`/course&details/${id}`} className='text-3xl'> 
-            <p className='m-[20px] rounded-2xl hover:bg-blue-700 text-center py-1 bg-red-500'>{name}</p>
+        <div className='sidenav-header'>
+          <Link to={`/course&details/${id}`} className='md:text-3xl text-2xl font-bold '> 
+            <p className='rounded-2xl m-3 py-2 bg-red-400 header-text'>{name}</p>
            </Link>
         </div>
     );
