@@ -30,6 +30,6 @@ const authInfo = {user,handleGoogleSignIn,loginWithEmailPassword,createNewUser}
             </AuthContext.Provider>
        
     );
-};
+}; 
 
 export default AuthProvider;
