@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvier/AuthProvider';
 
 const Register = () => {
@@ -41,7 +42,7 @@ const Register = () => {
         <div className="hero min-h-screen bg-base-200">
             <div className="hero-content flex-col">
                 <div className="">
-                    <h1 className="text-5xl font-bold">Login now!</h1>
+                    <h1 className="text-5xl font-bold">Register now!</h1>
                 </div>
                 <form onSubmit={handleRegister}  className="card flex-shrink-0 w-[600px] max-w-sm shadow-2xl bg-base-100">
                     <div className="card-body">
@@ -53,7 +54,7 @@ const Register = () => {
                         </div>
                         <div className="form-control">
                             <label className="label">
-                                <span className="label-text">picture URL </span>
+                                <span className="label-text">Picture URL </span>
                             </label>
                             <input onChange={handleImage} type="text" placeholder="your image url Optional" className="input input-bordered" />
                         </div>
@@ -68,13 +69,13 @@ const Register = () => {
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
-                            <input onChange={handlePassword} type="password" placeholder="enter password" className="input input-bordered" />
+                            <input onChange={handlePassword} type="password" placeholder="enter password" className="input input-bordered" required/>
                             <label className="label">
-                                <a href="/" className="label-text-alt link link-hover">Forgot password?</a>
+                                <p>Have already an account <Link to='/login' className='text-xl text-red-800 underline'>login now</Link> </p>
                             </label>
                         </div>
                         <div className="form-control mt-6">
-                            <button className="btn btn-primary">Login</button>
+                            <button className="btn btn-primary">Register</button>
                         </div>
                     </div>
                 </form>

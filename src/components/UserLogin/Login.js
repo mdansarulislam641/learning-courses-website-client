@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvier/AuthProvider';
 
 
@@ -61,6 +62,9 @@ const handlePassword = e =>{
                             <input onChange={handlePassword} type="password" placeholder="enter password" className="input input-bordered" />
                             <label className="label">
                                 <a href="/" className="label-text-alt link link-hover">Forgot password?</a>
+                            </label>
+                            <label className="label">
+                                <p >You haven't account Please <Link to='/register' className=" text-xl text-red-800 underline">Register now</Link></p>
                             </label>
                         </div>
                         <div className="form-control mt-6">
