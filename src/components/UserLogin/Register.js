@@ -1,15 +1,21 @@
+import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
+import { FaGoogle } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvier/AuthProvider';
 
 const Register = () => {
-    const {createNewUser} = useContext(AuthContext);
+    const GoogleProvider = new GoogleAuthProvider()
+    const {createNewUser,handleGoogleSignIn} = useContext(AuthContext);
     const [userInfo , setUserInfo] = useState({
         name:"",
         pictureURL:"",
         email:"",
         password:""
     })
+    const handleGoogleLogIn = ()=>{
+        handleGoogleSignIn(GoogleProvider)
+    }
     const handleRegister = e =>{
         e.preventDefault();
         createNewUser(userInfo.email,userInfo.password)
@@ -44,7 +50,8 @@ const Register = () => {
                 <div className="">
                     <h1 className="text-5xl font-bold">Register now!</h1>
                 </div>
-                <form onSubmit={handleRegister}  className="card flex-shrink-0 w-[600px] max-w-sm shadow-2xl bg-base-100">
+              <div  className="card flex-shrink-0 w-[600px] max-w-sm shadow-2xl bg-base-100">
+              <form onSubmit={handleRegister} >
                     <div className="card-body">
                         <div className="form-control">
                             <label className="label">
@@ -79,6 +86,10 @@ const Register = () => {
                         </div>
                     </div>
                 </form>
+                <div className="form-control w-[320px] mb-5 mx-auto">
+                            <button onClick={handleGoogleLogIn} className="btn btn-primary"><FaGoogle className='text-2xl text-black mr-2'/> Google Register</button>
+                        </div>
+              </div>
             </div>
         </div>
     );

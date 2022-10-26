@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from '../AuthProvier/AuthProvider';
 
 const Header = () => {
@@ -9,9 +9,12 @@ const Header = () => {
         <div className='bg-violet-300 py-2'>
            <div className='flex justify-between items-center w-9/12 mx-auto'>
             <div>
-                <h2>JUNIOR HERO</h2> 
+                <Link to='/home'>
+                <h2 className='text-3xl font-extrabold font-mono'><span className='text-5xl'>J</span><span className='text-yellow-600'>UNIOR</span><span className='text-blue-800'><span className='text-5xl text-white'>H</span>ERO</span></h2> 
+                </Link>
             </div>
-               <div> 
+               <div className='text-xl font-bold'> 
+                    <NavLink style={{padding:'5px 10px', borderRadius:'5px'}} className={({isActive}) => isActive ? 'bg-red-500' : undefined }  to='/home'>Home</NavLink>
                     <NavLink style={{padding:'5px 10px', borderRadius:'5px'}} className={({isActive}) => isActive ? 'bg-red-500' : undefined }  to='/courses'>Courses</NavLink>
                     <NavLink style={{padding:'5px 10px', borderRadius:'5px'}} className={({isActive}) => isActive ? 'bg-red-500' : undefined }  to='/faq'>FAQ</NavLink>
                     <NavLink style={{padding:'5px 10px', borderRadius:'5px'}} className={({isActive}) => isActive ? 'bg-red-500' : undefined }  to='/blog'>Blog</NavLink>

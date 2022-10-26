@@ -1,14 +1,14 @@
 import React, { createContext, useEffect, useState } from 'react';
 import { app } from '../firebase/firebase.config';
-import {createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword} from 'firebase/auth';
+import {createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup} from 'firebase/auth';
 export const AuthContext = createContext()
 const AuthProvider = ({children}) => {
 const auth = getAuth(app)
-const [user, setUser] = useState({displayName:'ansaroor'});
+const [user, setUser] = useState();
 
 // sign in with google
-const handleGoogleSignIn = () =>{
-
+const handleGoogleSignIn = (provider) =>{
+    return signInWithPopup(auth,provider)
 }
 // create user with register 
 const createNewUser = (email,password)=>{
@@ -28,7 +28,13 @@ useEffect(()=>{
     return ()=> unsubscribe();
 },[])
 // console.log(user)
-const authInfo = {user,handleGoogleSignIn,loginWithEmailPassword,createNewUser}
+const authInfo = {
+                user,
+                handleGoogleSignIn,
+                loginWithEmailPassword,
+                createNewUser,
+                
+            }
     return (
        
             

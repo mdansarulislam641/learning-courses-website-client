@@ -4,6 +4,7 @@ import CourseDetails from "../components/CourseDetails/CourseDetails";
 import ProsedCourse from "../components/CourseDetails/ProsedCourse";
 import Courses from "../components/Courses/Courses";
 import Faq from "../components/Faq/Faq";
+import Home from "../components/Home/Home";
 import Login from "../components/UserLogin/Login";
 import Register from "../components/UserLogin/Register";
 import Main from "../Layout/Main";
@@ -14,6 +15,14 @@ export const router = createBrowserRouter([
         element:<Main></Main>,
         loader:async ()=>fetch('http://localhost:7000/courses/'),
         children:[
+            {
+                path:'/',
+                element:<Home></Home>
+            },
+            {
+                path:'/home',
+                element:<Home></Home>
+            },
             {
                 path:'/courses',
                 element:<Courses></Courses>
