@@ -9,8 +9,8 @@ const CourseDetails = () => {
     // console.log(courseDetails)
     
     return (
-        <div className='course-sidenav-course-card-container  bg-violet-300'>
-             <div className='bg-violet-300 mt-[80px]'>
+        <div className='course-sidenav-course-card-container bg-violet-300 '>
+             <div className='bg-violet-300 md:mt-[80px]'>
              <CourseLeft ></CourseLeft>
              </div>
             <div className=" borer-2 bg-violet-200">
@@ -47,7 +47,7 @@ const CourseDetails = () => {
            
          </div>
          <Link to={`/course&prosed/${id}`} className=' mx-auto md:text-3xl text-2xl font-mono font-bold rounded-lg hover:bg-blue-600 text-black text-center'>
-            <p className='bg-blue-400 md:w-1/2 mx-auto py-2  md:mt-[50px]'>
+            <p className='bg-blue-400 md:w-1/2 mx-auto mb-5 md:py-5  md:mt-[50px]'>
             Get Premium 
             </p>
         </Link>

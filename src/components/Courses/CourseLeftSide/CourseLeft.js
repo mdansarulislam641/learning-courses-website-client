@@ -6,7 +6,7 @@ const CourseLeft = () => {
     const courses = useContext(CourseContext);
     // console.log(courses)
     return (
-        <div className=' side-nav-container'>
+        <div className='side-nav-container'>
             {
                 courses.map(singleCourse=><Course
                     key={singleCourse.id}

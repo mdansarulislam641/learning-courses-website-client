@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
+import '../Courses.css';
 const Course = ({course}) => {
     // console.log(course)
     const {name,id} = course ;

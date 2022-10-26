@@ -22,8 +22,8 @@ const Login = () => {
     const handleGoogleLogIn = () =>{
         handleGoogleSignIn(GoogleProvider)
         .then(result=>{
-
-            navigate('/')
+            navigate(from , {replace:true});
+            // navigate('/')
         })
         .catch(e=>{})
     }
