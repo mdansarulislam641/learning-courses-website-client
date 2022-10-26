@@ -3,8 +3,13 @@ import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from '../AuthProvier/AuthProvider';
 
 const Header = () => {
-    const {user } = useContext(AuthContext)
-    console.log(user)
+    const {user,logOutUser } = useContext(AuthContext)
+    // console.log(user)
+    const handleSignOut = () =>{
+        logOutUser()
+        .then(()=>{})
+        .catch(error=>{})
+    }
     return (
         <div className='bg-violet-300 py-2'>
            <div className='flex justify-between items-center w-9/12 mx-auto'>
@@ -21,8 +26,8 @@ const Header = () => {
                    {
                     user && user?.uid ? 
                     <>
-                   <span> {user.displayName}</span>
-                    <button className='btn-outline font-bold font-mono text-xl rounded'>SignOut</button>
+                   <span className='mr-3 text-white'> {user.displayName}</span>
+                    <button onClick={handleSignOut} className='btn-outline font-bold font-mono text-xl rounded'>SignOut</button>
                     {
                        user && user?.photoURL ? <img title={user?.displayName}  className='h-[40px] rounded-full inline-block ml-5' src={user.photoURL} alt="" /> : <img 
                         title={user?.displayName} className='h-[40px] rounded-full inline-block ml-5' src='https://i.ibb.co/MnGKtKm/download.jpg' alt="" />

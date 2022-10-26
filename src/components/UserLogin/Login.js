@@ -1,7 +1,7 @@
 import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import { FaGoogle } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvier/AuthProvider';
 
 
@@ -16,7 +16,9 @@ const Login = () => {
         email:"",
         password:""
     })
-
+    const location = useLocation()
+    const navigate = useNavigate()
+    const from = location.state?.from?.pathname || '/';
     const handleGoogleLogIn = () =>{
         handleGoogleSignIn(GoogleProvider)
     }
@@ -25,7 +27,7 @@ const Login = () => {
         e.preventDefault();
         loginWithEmailPassword(userInfo.email, userInfo.password)
         .then(result=>{
-
+            navigate(from , {replace:true});
         })
         .catch(error=>{
 

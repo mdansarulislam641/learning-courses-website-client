@@ -8,6 +8,7 @@ import Home from "../components/Home/Home";
 import Login from "../components/UserLogin/Login";
 import Register from "../components/UserLogin/Register";
 import Main from "../Layout/Main";
+import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
     {
@@ -42,7 +43,7 @@ export const router = createBrowserRouter([
             },
             {
                 path:'/course&prosed/:id',
-                element:<ProsedCourse></ProsedCourse>,
+                element:<PrivateRoute><ProsedCourse></ProsedCourse></PrivateRoute>,
                 loader:async({params})=>fetch(`http://localhost:7000/courses/${params.id}`)
             },
             {
