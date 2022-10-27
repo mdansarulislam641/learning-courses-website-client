@@ -6,9 +6,15 @@
 4. Website github Link :  https://github.com/programming-hero-web-course1/b610-learning-platform-client-side-mdansarulislam641
 
 
-Markup : <details>
+ <details>
            <summary>
                 How can i create this website: At first i create a react app,and here i install firebase authentication and react toast and tailwind css and daisyui framework, and react-router-dom
            </summary>
-          
-         </details>
+           </details>
+
+ <details>
+           <summary>
+              I also at fist create some component and routes and link the routes in Header and it's link to main component ,and i main components inside use outlet , 
+           </summary>
+          </details>
+      
