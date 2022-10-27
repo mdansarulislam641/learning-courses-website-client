@@ -129,7 +129,7 @@ const Register = () => {
               <form onSubmit={handleRegister} >
                     <div className="card-body">
                         <div className="form-control">
-                            <label className="label">
+                            <label className="label"> 
                                 <span className="label-text">Name</span>
                             </label>
                             <input onChange={handleName} type="text" placeholder="your name" className="input input-bordered" required />
