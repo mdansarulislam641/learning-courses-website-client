@@ -1,13 +1,15 @@
-import { GoogleAuthProvider } from 'firebase/auth';
+import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
-import { FaGoogle } from 'react-icons/fa';
+import toast from 'react-hot-toast';
+import { FaGithub, FaGoogle } from 'react-icons/fa';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvier/AuthProvider';
 
 
 const Login = () => {
-    const GoogleProvider = new GoogleAuthProvider()
-    const {loginWithEmailPassword,handleGoogleSignIn} = useContext(AuthContext)
+    const GoogleProvider = new GoogleAuthProvider();
+    const GithubProvider = new GithubAuthProvider();
+    const {githubLogin,loginWithEmailPassword,handleGoogleSignIn} = useContext(AuthContext)
     const [userInfo , setUserInfo] = useState({
         email:"",
         password:""
@@ -17,13 +19,25 @@ const Login = () => {
         password:""
     })
     const location = useLocation()
+    console.log(location)
     const navigate = useNavigate()
     const from = location.state?.from?.pathname || '/';
     const handleGoogleLogIn = () =>{
         handleGoogleSignIn(GoogleProvider)
         .then(result=>{
+            toast.success("successfully login")
             navigate(from , {replace:true});
-            // navigate('/')
+            navigate('/')
+        })
+        .catch(e=>{})
+    }
+    // github login
+    const handleGithubLogIn = () =>{
+        githubLogin(GithubProvider)
+        .then(result=>{
+            toast.success("successfully login")
+            navigate(from , {replace:true});
+            navigate('/')
         })
         .catch(e=>{})
     }
@@ -32,6 +46,7 @@ const Login = () => {
         e.preventDefault();
         loginWithEmailPassword(userInfo.email, userInfo.password)
         .then(result=>{
+            toast.success("successfully login")
             navigate(from , {replace:true});
         })
         .catch(error=>{
@@ -60,7 +75,7 @@ const handlePassword = e =>{
                 <div className="">
                     <h1 className="text-5xl font-bold">Login now!</h1>
                 </div>
-              <div  className="card flex-shrink-0 w-[600px] max-w-sm shadow-2xl bg-base-100">
+              <div  className="card flex-shrink-0 max-w-[600px] shadow-2xl bg-base-100">
               <form onSubmit={handleSubmit} >
                     <div className="card-body">
                         <div className="form-control">
@@ -87,9 +102,14 @@ const handlePassword = e =>{
                         </div>
                     </div>
                 </form>
-                <div className="form-control w-[320px] mb-5 mx-auto">
+          
+              <div className="form-control w-[320px]  mb-5 mx-auto">
                             <button onClick={handleGoogleLogIn} className="btn btn-primary"><FaGoogle className='text-2xl text-black mr-2'/> Google Login</button>
                         </div>
+                <div className="form-control w-[320px]  mb-5 mx-auto">
+                            <button onClick={handleGithubLogIn} className="btn btn-primary"><FaGithub className='text-2xl text-black mr-2'/> Github Login</button>
+                        </div>
+             
               </div>
             </div>
         </div>

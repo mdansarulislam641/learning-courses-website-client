@@ -3,6 +3,8 @@ import { Link, useLoaderData } from 'react-router-dom';
 import {  FaDownload} from 'react-icons/fa';
 import './CourseDetails.css';
 import CourseLeft from '../Courses/CourseLeftSide/CourseLeft';
+
+
 const CourseDetails = () => {
     const courseDetails = useLoaderData()
     const { name, id,description_title,description_img, description_header, description, price } = courseDetails;
@@ -18,7 +20,10 @@ const CourseDetails = () => {
                <h1>{description_header}</h1>
            </div>
                <div className='text-center mt-5 flex items-center justify-between mx-5'>
-               <div><button className='border-2 flex items-center py-2 px-2 btn-outline text-2xl bg-violet-200 rounded-lg'><FaDownload className='text-red-500 mr-1'/><span>download</span></button></div>
+             
+
+           <div><button className='border-2 flex items-center py-2 px-2 btn-outline text-2xl bg-violet-200 rounded-lg'><FaDownload className='text-red-500 mr-1'/><span>download</span></button></div>
+           
                <h2 className='md:text-2xl text-xl font-bold'>Total Price:{price}</h2>
                </div>
          <div className='grid mx-auto details-container'>

@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
-import { FaBarcode, FaBars, FaCross, FaTimes } from 'react-icons/fa';
+import toast from 'react-hot-toast';
+import { FaBars, FaTimes } from 'react-icons/fa';
 import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from '../AuthProvier/AuthProvider';
 
@@ -9,7 +10,9 @@ const Header = () => {
     // console.log(user)
     const handleSignOut = () =>{
         logOutUser()
-        .then(()=>{})
+        .then(()=>{
+            toast.success("successfully logOut")
+        })
         .catch(error=>{})
     }
     const handleShow = () =>{

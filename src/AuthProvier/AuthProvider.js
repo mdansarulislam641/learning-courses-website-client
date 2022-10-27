@@ -1,6 +1,6 @@
 import React, { createContext, useEffect, useState } from 'react';
 import { app } from '../firebase/firebase.config';
-import {createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut} from 'firebase/auth';
+import {createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile} from 'firebase/auth';
 export const AuthContext = createContext()
 const AuthProvider = ({children}) => {
 const auth = getAuth(app)
@@ -12,6 +12,13 @@ const handleGoogleSignIn = (provider) =>{
     setLoading(true)
     return signInWithPopup(auth,provider)
 }
+
+// github login user
+const githubLogin = (provider) =>{
+    setLoading(true)
+    return signInWithPopup(auth,provider)
+}
+
 // create user with register 
 const createNewUser = (email,password)=>{
     setLoading(true)
@@ -23,6 +30,11 @@ const loginWithEmailPassword = (email, password)=>{
     setLoading(true)
     return signInWithEmailAndPassword(auth,email,password)
 }
+// update user profile name and image
+const handleUpdateUserProfile = profile =>{
+   return updateProfile(auth.currentUser,profile)
+}
+
 
 // user observer 
 useEffect(()=>{
@@ -30,7 +42,7 @@ useEffect(()=>{
         setUser(currentUser)
         setLoading(false);
     })
-    return ()=> unsubscribe();
+    return () => unsubscribe();
 },[])
 
 // logout user 
@@ -41,9 +53,11 @@ const authInfo = {
                 user,
                 loading,
                 handleGoogleSignIn,
+                githubLogin,
                 loginWithEmailPassword,
                 createNewUser,
-                logOutUser
+                logOutUser,
+                handleUpdateUserProfile
                 
             }
     return (
