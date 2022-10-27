@@ -3,6 +3,7 @@ import toast from 'react-hot-toast';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from '../AuthProvier/AuthProvider';
+import logo from './images.jpg';
 
 const Header = () => {
     const {user,logOutUser } = useContext(AuthContext)
@@ -24,7 +25,7 @@ const Header = () => {
            <div className='flex justify-between items-center max-w-[1300px] mx-auto'>
             <div>
                 <Link to='/home'>
-                <h2 className='text-3xl font-extrabold font-mono'><span className='text-5xl'>J</span><span className='text-yellow-600'>UNIOR</span><span className='text-blue-800'><span className='text-5xl text-white'>H</span>ERO</span></h2> 
+                <h2 className='flex items-center text-3xl font-extrabold font-mono'> <img className='w-[50px] rounded-full' src={logo} alt="" /> <span className='text-5xl'>J</span><span className='text-yellow-600'>UNIOR</span><span className='text-blue-800'><span className='text-5xl text-white'>H</span>ERO</span></h2> 
                 </Link>
             </div>
             {

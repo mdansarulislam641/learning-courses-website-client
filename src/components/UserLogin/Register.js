@@ -18,7 +18,8 @@ const Register = () => {
     const [userError, setUserError] = useState({
         email:"",
         password:""
-    })
+    });
+    const [error, setError] = useState();
     const navigate = useNavigate();
     const location = useLocation();
     // console.log(location)
@@ -44,14 +45,15 @@ const Register = () => {
         e.preventDefault();
         createNewUser(userInfo.email,userInfo.password)
         .then(result=>{
-            toast.success("successfully Register")
             handleUserProfile(userInfo.name,userInfo.pictureURL)
             navigate(from, {replace:true})
             navigate('/');
+            toast.success("successfully Register")
 
         })  
         .catch(error=>{
-
+            toast.error(error.message)
+            setError(error.message)
         })
     }
 
@@ -71,7 +73,9 @@ const Register = () => {
         .then(()=>{
             toast.success("added user name and picture")
         })
-        .catch(()=>{})
+        .catch((e)=>{
+            toast.error(e.message)
+        })
     }
 
     const handleEmail = e =>{
@@ -121,7 +125,7 @@ const Register = () => {
                 <div className="">
                     <h1 className="text-5xl font-bold">Register now!</h1>
                 </div>
-              <div  className="card flex-shrink-0 w-[600px] max-w-sm shadow-2xl bg-base-100">
+              <div  className="card flex-shrink-0 lg-w-[600px] shadow-2xl bg-base-100">
               <form onSubmit={handleRegister} >
                     <div className="card-body">
                         <div className="form-control">
@@ -134,7 +138,7 @@ const Register = () => {
                             <label className="label">
                                 <span className="label-text">Picture URL </span>
                             </label>
-                            <input onChange={handleImage} type="text" placeholder="your image url Optional" className="input input-bordered" required />
+                            <input onChange={handleImage} type="text" placeholder="your image url Optional" className="input input-bordered" />
                         </div>
                         <div className="form-control">
                             <label className="label">
@@ -151,6 +155,7 @@ const Register = () => {
                             <input onChange={handlePassword} type="password" placeholder="enter password" className="input input-bordered" required/>
                             <p>{userError.password}</p>
                             <label className="label">
+                                <p>{error}</p>
                                 <p>Have already an account <Link to='/login' className='text-xl text-red-800 underline'>login now</Link> </p>
                             </label>
                         </div>
@@ -159,12 +164,15 @@ const Register = () => {
                         </div>
                     </div>
                 </form>
-                <div className="form-control w-[320px] mb-5 mx-auto">
+          
+               <div className='w-full'>
+               <div className="form-control lg:w-[400px] w-[250px] mb-5 mx-auto">
                             <button onClick={handleGoogleLogIn} className="btn btn-primary"><FaGoogle className='text-2xl text-black mr-2'/> Google Register</button>
                         </div>
-                        <div className="form-control w-[320px]  mb-5 mx-auto">
-                            <button onClick={handleGithubLogIn} className="btn btn-primary"><FaGithub className='text-2xl text-black mr-2'/> Github Login</button>
+                        <div className="form-control lg:w-[350px]  w-[250px]  mb-5 mx-auto">
+                            <button onClick={handleGithubLogIn} className="btn btn-primary"><FaGithub className='text-2xl text-black mr-2'/> Github Register</button>
                         </div>
+               </div>
               </div>
             </div>
         </div>

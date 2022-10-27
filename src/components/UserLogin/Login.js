@@ -9,7 +9,9 @@ import { AuthContext } from '../../AuthProvier/AuthProvider';
 const Login = () => {
     const GoogleProvider = new GoogleAuthProvider();
     const GithubProvider = new GithubAuthProvider();
-    const {githubLogin,loginWithEmailPassword,handleGoogleSignIn} = useContext(AuthContext)
+    const {user,githubLogin,loginWithEmailPassword,handleGoogleSignIn,resetUserPassword} = useContext(AuthContext)
+
+
     const [userInfo , setUserInfo] = useState({
         email:"",
         password:""
@@ -18,6 +20,7 @@ const Login = () => {
         email:"",
         password:""
     })
+    const [error, setError] = useState("");
     const location = useLocation()
     console.log(location)
     const navigate = useNavigate()
@@ -48,9 +51,11 @@ const Login = () => {
         .then(result=>{
             toast.success("successfully login")
             navigate(from , {replace:true});
+            setError("")
         })
         .catch(error=>{
-
+            setError(error.message)
+            toast.error(error.message)
         })
     }
 const handleEmail = e =>{
@@ -68,6 +73,18 @@ const handlePassword = e =>{
     const password = e.target.value ;
     setUserInfo({...userInfo, password:password})
 }
+
+// user password reset 
+ const handlePasswordReset = () =>{
+    resetUserPassword(userInfo.email)
+    .then(()=>{
+        toast.success("please check your email for reset password")
+        // console.log(userInfo.email)
+    })
+    .catch((e)=>{
+        toast.error(e.message)
+    })
+ }
  console.log(userInfo.email, userInfo.password)
     return (
         <div className="hero min-h-screen bg-base-200">
@@ -75,7 +92,7 @@ const handlePassword = e =>{
                 <div className="">
                     <h1 className="text-5xl font-bold">Login now!</h1>
                 </div>
-              <div  className="card flex-shrink-0 max-w-[600px] shadow-2xl bg-base-100">
+              <div  className="card flex-shrink-0 lg-w-[600px] shadow-2xl bg-base-100">
               <form onSubmit={handleSubmit} >
                     <div className="card-body">
                         <div className="form-control">
@@ -90,8 +107,9 @@ const handlePassword = e =>{
                                 <span className="label-text">Password</span>
                             </label>
                             <input onChange={handlePassword} type="password" placeholder="enter password" className="input input-bordered" />
+                           
                             <label className="label">
-                                <a href="/" className="label-text-alt link link-hover">Forgot password?</a>
+                                <button onClick={handlePasswordReset} className="label-text-alt link link-hover text-xl">Forgot password?</button>
                             </label>
                             <label className="label">
                                 <p >You haven't account Please <Link to='/register' className=" text-xl text-red-800 underline">Register now</Link></p>
@@ -103,11 +121,12 @@ const handlePassword = e =>{
                     </div>
                 </form>
           
-              <div className="form-control w-[320px]  mb-5 mx-auto">
+              <div className="form-control lg:w-[320px] w-[250px]  mb-5 mx-auto">
                             <button onClick={handleGoogleLogIn} className="btn btn-primary"><FaGoogle className='text-2xl text-black mr-2'/> Google Login</button>
                         </div>
-                <div className="form-control w-[320px]  mb-5 mx-auto">
+                <div className="form-control lg:w-[320px]  w-[250px] mb-5 mx-auto">
                             <button onClick={handleGithubLogIn} className="btn btn-primary"><FaGithub className='text-2xl text-black mr-2'/> Github Login</button>
+                            
                         </div>
              
               </div>
