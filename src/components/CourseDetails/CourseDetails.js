@@ -24,10 +24,10 @@ const CourseDetails = () => {
                <div className='text-center mt-5 flex items-center justify-between mx-5'>
              
 
-           <div><button className='border-2 flex items-center py-2 px-2 btn-outline text-2xl bg-violet-200 rounded-lg'>
+           <div><button className='border-2 flex items-center py-2 px-2 btn-primary  text-2xl  rounded-lg'>
            <ReactToPdf targetRef={ref} filename="course-details.pdf">
                         {({ toPdf }) => (
-                            <button className='flex items-center' onClick={toPdf}><FaDownload className='text-red-500 mr-1'/><span>Download pdf</span></button>
+                            <button className='flex items-center' onClick={toPdf}><FaDownload className='text-white mr-1'/><span>Download pdf</span></button>
                         )}
                     </ReactToPdf>
            
@@ -49,7 +49,7 @@ const CourseDetails = () => {
             </div>
             <div className='h-[300px] mt-[35px]  block course-details-cart'>
                 <h2 className='text-2xl text-center font-extrabold underline mb-5 text-red-700'>Course Information</h2>
-                   <div className='bg-red-500 border-2 mr-5 '>
+                   <div className='bg-blue-300  border-2 mr-5 '>
                    <img className='w-full h-[200px] object-fill'  src={description_img} alt="" />
                     <div className='p-5'>
                     <h2 className='text-4xl font-extrabold'>Course: {name}</h2>

@@ -19,9 +19,9 @@ const Header = () => {
     const handleShow = () =>{
         setToggle(!toggle)
     }
-    console.log(toggle)
+
     return (
-        <div className='bg-violet-300 py-2 max-w-full mb-5 sticky top-0 z-10'>
+        <div className='bg-violet-300 py-2 max-w-full  sticky top-0 z-10'>
            <div className='flex justify-between items-center max-w-[1300px] mx-auto'>
             <div>
                 <Link to='/home'>
