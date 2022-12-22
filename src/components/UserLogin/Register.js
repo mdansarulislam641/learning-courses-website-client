@@ -166,10 +166,10 @@ const Register = () => {
                 </form>
           
                <div className='w-full'>
-               <div className="form-control lg:w-[400px] w-[250px] mb-5 mx-auto">
+               <div className="form-control lg:w-[275px] w-[250px] mb-5 mx-auto">
                             <button onClick={handleGoogleLogIn} className="btn btn-primary"><FaGoogle className='text-2xl text-black mr-2'/> Google Register</button>
                         </div>
-                        <div className="form-control lg:w-[350px]  w-[250px]  mb-5 mx-auto">
+                        <div className="form-control lg:w-[275px]  w-[250px]  mb-5 mx-auto">
                             <button onClick={handleGithubLogIn} className="btn btn-primary"><FaGithub className='text-2xl text-black mr-2'/> Github Register</button>
                         </div>
                </div>
